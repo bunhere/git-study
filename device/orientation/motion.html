@@ -89,13 +89,13 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 				// Listen for the deviceorientation event and handle the raw data
 				window.addEventListener('deviceorientation', function(eventData) {
 					// gamma is the left-to-right tilt in degrees, where right is positive
-					var tiltLR = eventData.gamma;
+					var tiltLR = Math.round(eventData.gamma);
 					
 					// beta is the front-to-back tilt in degrees, where front is positive
-					var tiltFB = eventData.beta;
+					var tiltFB = Math.round(eventData.beta);
 					
 					// alpha is the compass direction the device is facing in degrees
-					var dir = eventData.alpha
+					var dir = Math.round(eventData.alpha);
 					
 					// deviceorientation does not provide this data
 					var motUD = null;
@@ -155,7 +155,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			if (oa != a || ob != b || og != g) {
 				result += "[" + a + "," + b + "," + g + "] : "
 					+ (a - oa) + ","+ (b - ob) + ","+ (g - og)
-					+ " / " + rra + ", " + rrb + ", " + rrg;
+					+ " / " + rra + ", " + rrb + ", " + rrg + "<br>";
 				oa = a;
 				ob = b;
 				og = g;
