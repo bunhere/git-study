@@ -85,11 +85,26 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			} else {
 				document.getElementById("dmEvent").innerHTML = "Not supported on your device or browser.  Sorry."
 			}
+			if (window.DeviceOrientationEvent) {
+				// Listen for the deviceorientation event and handle the raw data
+				window.addEventListener('deviceorientation', function(eventData) {
+					// gamma is the left-to-right tilt in degrees, where right is positive
+					var tiltLR = eventData.gamma;
+					
+					// beta is the front-to-back tilt in degrees, where front is positive
+					var tiltFB = eventData.beta;
+					
+					// alpha is the compass direction the device is facing in degrees
+					var dir = eventData.alpha
+					
+					// deviceorientation does not provide this data
+					var motUD = null;
+					
+					// call our orientation event handler
+					deviceOrientationHandler(tiltLR, tiltFB, dir, motUD);
+					}, false);
+			}
 		}
-		var resultString = "";
-		var oldX = 0;
-		var oldY = 0;
-		var oldZ = 0;
 		function deviceMotionHandler3(eventData) {
 			// Grab the acceleration including gravity from the results
 			var acceleration = eventData.accelerationIncludingGravity;
@@ -111,13 +126,6 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			if (acceleration.z > 0) {
 				facingUp = +1;
 			}
-
-                        if (oldX != x || oldY != y || oldZ !=z) {
-                        	resultString += rawAcceleration + "#" + rawAcceleration2 + "<br>";
-                        	oldX = x;
-                        	oldY = y;
-                        	oldZ = z;
-                        }
                         
 			// Convert the value from acceleration to degress
 			//   acceleration.x|y is the acceleration according to gravity, we'll assume we're on Earth and divide 
@@ -131,14 +139,24 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			document.getElementById("rotationRate").innerHTML = rawRotationRate;
 			document.getElementById("moCalcTiltLR").innerHTML = tiltLR;
 			document.getElementById("moCalcTiltFB").innerHTML = tiltFB;
-			document.getElementById("result").innerHTML = resultString;
 			
 			// Apply the 2D rotation and 3D rotation to the image
 			var rotation = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB)+"deg)";
 			document.getElementById("imgLogo").style.webkitTransform = rotation
 			
 		}
-
+		var oa,ob,og;
+		var result = "";
+		function deviceOrientationHandler(g, b, a, motionUD) {
+			if (oa != a || ob != b || og != g) {
+				result += "[" + a + "," + b + "," + g + "] : "
+					+ (a - oa) + ","+ (b - ob) + ","+ (g - og) + ",";
+				oa = a;
+				ob = b;
+				og = g;
+			}
+			document.getElementById("result").innerHTML = result;
+		}
 	</script>
 	
 </body>
