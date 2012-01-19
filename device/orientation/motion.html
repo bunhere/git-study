@@ -105,6 +105,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 					}, false);
 			}
 		}
+		var rra,rrb,rrg;
 		function deviceMotionHandler3(eventData) {
 			// Grab the acceleration including gravity from the results
 			var acceleration = eventData.accelerationIncludingGravity;
@@ -120,6 +121,9 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			
             var rotationRate = eventData.rotationRate;
             var rawRotationRate = "[" + Math.round(rotationRate.alpha) + ", " + Math.round(rotationRate.beta) + ", " + Math.round(rotationRate.gamma) + "]";
+            		rra = rotationRate.alpha;
+            		rrb = rotationRate.beta;
+            		rrg = rotationRate.gamma;
 			
 			// Z is the acceleration in the Z axis, and tells us if the device is facing up, or down
 			var facingUp = -1;
@@ -150,7 +154,8 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 		function deviceOrientationHandler(g, b, a, motionUD) {
 			if (oa != a || ob != b || og != g) {
 				result += "[" + a + "," + b + "," + g + "] : "
-					+ (a - oa) + ","+ (b - ob) + ","+ (g - og) + ",";
+					+ (a - oa) + ","+ (b - ob) + ","+ (g - og)
+					+ " / " + rra + ", " + rrb + ", " + rrg;
 				oa = a;
 				ob = b;
 				og = g;
