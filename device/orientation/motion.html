@@ -78,7 +78,14 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 				console.log("DeviceMotionEvent supported [listenForDeviceMovement]");
 			}
 		}
+		var oa = 0;
+		var ob = 0;
+		var og = 0;
 		
+		var rra = 0;
+		var rrb = 0;
+		var rrg = 0;
+		var result = "";
 		function init2() {
 			if ((window.DeviceMotionEvent) || ('listenForDeviceMovement' in window)) {
 				window.addEventListener('devicemotion', deviceMotionHandler3, false);
@@ -101,13 +108,21 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 					var motUD = null;
 					
 					// call our orientation event handler
-					deviceOrientationHandler(mg, mb, ma, motUD);
+					if (oa != ma || ob != mb || og != mg) {
+						var t = ma - oa;
+						var t2 = mb - ob;
+						var t3 = mg - og;
+						result += "[" + a + "," + b + "," + g + "] : "
+							+ t + ","+ t2 + ","+ t3
+							+ " / " + rra + ", " + rrb + ", " + rrg + "<br>";
+						oa = ma;
+						ob = mb;
+						og = mg;
+						document.getElementById("result").innerHTML = result;
+					}
 					}, false);
 			}
 		}
-		var rra = 0;
-		var rrb = 0;
-		var rrg = 0;
 		function deviceMotionHandler3(eventData) {
 			// Grab the acceleration including gravity from the results
 			var acceleration = eventData.accelerationIncludingGravity;
@@ -151,23 +166,9 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			document.getElementById("imgLogo").style.webkitTransform = rotation
 			
 		}
-		var oa = 0;
-		var ob = 0;
-		var og = 0;
-		var result = "";
+		
 		function deviceOrientationHandler(g, b, a, motionUD) {
-			if (oa != a || ob != b || og != g) {
-				var t = a - oa;
-				var t2 = b - ob;
-				var t3 = g - og;
-				result += "[" + a + "," + b + "," + g + "] : "
-					+ t + ","+ t2 + ","+ t3
-					+ " / " + rra + ", " + rrb + ", " + rrg + "<br>";
-				oa = a;
-				ob = b;
-				og = g;
-				document.getElementById("result").innerHTML = result;
-			}
+			
 			
 		}
 	</script>
