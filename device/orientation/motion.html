@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en"> 
 <head>
@@ -60,6 +59,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			<tr>
 				<td>Calculated Front-Back Tilt</td><td id="moCalcTiltFB"></td>
 			</tr>
+			<tr><td>TEST RESULT:</td><td id="result"></td>
 		</table>
 	</div>
 	
@@ -86,7 +86,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 				document.getElementById("dmEvent").innerHTML = "Not supported on your device or browser.  Sorry."
 			}
 		}
-		
+		var resultString = "";
 		function deviceMotionHandler3(eventData) {
 			// Grab the acceleration including gravity from the results
 			var acceleration = eventData.accelerationIncludingGravity;
@@ -106,6 +106,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 				facingUp = +1;
 			}
 
+                        resultString += rawAcceleration + "#" + rawAcceleration2;
 			// Convert the value from acceleration to degress
 			//   acceleration.x|y is the acceleration according to gravity, we'll assume we're on Earth and divide 
 			//   by 9.81 (earth gravity) to get a percentage value, and then multiply that by 90 to convert to degrees.				
@@ -118,6 +119,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			document.getElementById("rotationRate").innerHTML = rawRotationRate;
 			document.getElementById("moCalcTiltLR").innerHTML = tiltLR;
 			document.getElementById("moCalcTiltFB").innerHTML = tiltFB;
+			document.getElementById("result").innerHTML = resultString;
 			
 			// Apply the 2D rotation and 3D rotation to the image
 			var rotation = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB)+"deg)";
