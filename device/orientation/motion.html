@@ -87,11 +87,17 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			}
 		}
 		var resultString = "";
+		var oldX = 0;
+		var oldY = 0;
+		var oldZ = 0;
 		function deviceMotionHandler3(eventData) {
 			// Grab the acceleration including gravity from the results
 			var acceleration = eventData.accelerationIncludingGravity;
 			
 			// Display the raw acceleration data
+			var x = Math.round(acceleration.x);
+			var y = Math.round(acceleration.y);
+			var z = Math.round(acceleration.z);
 			var rawAcceleration = "[" + Math.round(acceleration.x) + ", " + Math.round(acceleration.y) + ", " + Math.round(acceleration.z) + "]";
 
             var acceleration2 = eventData.acceleration;
@@ -106,7 +112,13 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 				facingUp = +1;
 			}
 
-                        resultString += rawAcceleration + "#" + rawAcceleration2;
+                        if (oldX != x || oldY != y || oldZ !=z) {
+                        	resultString += rawAcceleration + "#" + rawAcceleration2 + "<br>";
+                        	oldX = x;
+                        	oldY = y;
+                        	oldZ = z;
+                        }
+                        
 			// Convert the value from acceleration to degress
 			//   acceleration.x|y is the acceleration according to gravity, we'll assume we're on Earth and divide 
 			//   by 9.81 (earth gravity) to get a percentage value, and then multiply that by 90 to convert to degrees.				
