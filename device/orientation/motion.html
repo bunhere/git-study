@@ -89,19 +89,19 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 				// Listen for the deviceorientation event and handle the raw data
 				window.addEventListener('deviceorientation', function(eventData) {
 					// gamma is the left-to-right tilt in degrees, where right is positive
-					var tiltLR = Math.round(eventData.gamma);
+					var mg = Math.round(eventData.gamma);
 					
 					// beta is the front-to-back tilt in degrees, where front is positive
-					var tiltFB = Math.round(eventData.beta);
+					var mb = Math.round(eventData.beta);
 					
 					// alpha is the compass direction the device is facing in degrees
-					var dir = Math.round(eventData.alpha);
+					var ma = Math.round(eventData.alpha);
 					
 					// deviceorientation does not provide this data
 					var motUD = null;
 					
 					// call our orientation event handler
-					deviceOrientationHandler(tiltLR, tiltFB, dir, motUD);
+					deviceOrientationHandler(mg, mb, ma, motUD);
 					}, false);
 			}
 		}
@@ -121,9 +121,9 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			
             var rotationRate = eventData.rotationRate;
             var rawRotationRate = "[" + Math.round(rotationRate.alpha) + ", " + Math.round(rotationRate.beta) + ", " + Math.round(rotationRate.gamma) + "]";
-            		rra = rotationRate.alpha;
-            		rrb = rotationRate.beta;
-            		rrg = rotationRate.gamma;
+            		rra = Math.round(rotationRate.alpha);
+            		rrb = Math.round(rotationRate.beta);
+            		rrg = rMath.round(otationRate.gamma);
 			
 			// Z is the acceleration in the Z axis, and tells us if the device is facing up, or down
 			var facingUp = -1;
