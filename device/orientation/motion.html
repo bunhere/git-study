@@ -149,7 +149,9 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			document.getElementById("imgLogo").style.webkitTransform = rotation
 			
 		}
-		var oa,ob,og;
+		var oa = 0;
+		var ob = 0
+		var og = 0;
 		var result = "";
 		function deviceOrientationHandler(g, b, a, motionUD) {
 			if (oa != a || ob != b || og != g) {
