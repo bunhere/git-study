@@ -123,7 +123,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
             var rawRotationRate = "[" + Math.round(rotationRate.alpha) + ", " + Math.round(rotationRate.beta) + ", " + Math.round(rotationRate.gamma) + "]";
             		rra = Math.round(rotationRate.alpha);
             		rrb = Math.round(rotationRate.beta);
-            		rrg = rMath.round(otationRate.gamma);
+            		rrg = Math.round(otationRate.gamma);
 			
 			// Z is the acceleration in the Z axis, and tells us if the device is facing up, or down
 			var facingUp = -1;
@@ -155,8 +155,11 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 		var result = "";
 		function deviceOrientationHandler(g, b, a, motionUD) {
 			if (oa != a || ob != b || og != g) {
+				var t = a - oa;
+				var t2 = b - ob;
+				car t3 = g - og;
 				result += "[" + a + "," + b + "," + g + "] : "
-					+ (a - oa) + ","+ (b - ob) + ","+ (g - og)
+					+ t + ","+ t2 + ","+ t3
 					+ " / " + rra + ", " + rrb + ", " + rrg + "<br>";
 				oa = a;
 				ob = b;
