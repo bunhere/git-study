@@ -105,7 +105,9 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 					}, false);
 			}
 		}
-		var rra,rrb,rrg;
+		var rra = 0;
+		var rrb = 0;
+		var rrg = 0;
 		function deviceMotionHandler3(eventData) {
 			// Grab the acceleration including gravity from the results
 			var acceleration = eventData.accelerationIncludingGravity;
@@ -150,14 +152,14 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 			
 		}
 		var oa = 0;
-		var ob = 0
+		var ob = 0;
 		var og = 0;
 		var result = "";
 		function deviceOrientationHandler(g, b, a, motionUD) {
 			if (oa != a || ob != b || og != g) {
 				var t = a - oa;
 				var t2 = b - ob;
-				car t3 = g - og;
+				var t3 = g - og;
 				result += "[" + a + "," + b + "," + g + "] : "
 					+ t + ","+ t2 + ","+ t3
 					+ " / " + rra + ", " + rrb + ", " + rrg + "<br>";
