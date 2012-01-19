@@ -112,7 +112,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 						var t = ma - oa;
 						var t2 = mb - ob;
 						var t3 = mg - og;
-						result = "[" + ma + "," + mb + "," + mg + "] : "
+						result += "[" + ma + "," + mb + "," + mg + "] : "
 							+ t + ","+ t2 + ","+ t3
 							+ " / " + rra + ", " + rrb + ", " + rrg + "<br>";
 						oa = ma;
@@ -140,7 +140,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
             var rawRotationRate = "[" + Math.round(rotationRate.alpha) + ", " + Math.round(rotationRate.beta) + ", " + Math.round(rotationRate.gamma) + "]";
             		rra = Math.round(rotationRate.alpha);
             		rrb = Math.round(rotationRate.beta);
-            		rrg = Math.round(otationRate.gamma);
+            		rrg = Math.round(rotationRate.gamma);
 			
 			// Z is the acceleration in the Z axis, and tells us if the device is facing up, or down
 			var facingUp = -1;
