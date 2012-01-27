@@ -52,6 +52,7 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 </tr>
 <tr><td>rotationRate</td><td id="rotationRate"></td></tr>
 <tr><td>interval</td><td id="interval"></td></tr>
+<tr><td>elapsed time </td><td id="elapsed"></td></tr>
 <tr>
 <td>Calculated Left-Right Tilt</td><td id="moCalcTiltLR"></td>
 </tr>
@@ -89,7 +90,10 @@ var resultString = "";
 var oldX = 0;
 var oldY = 0;
 var oldZ = 0;
+var oldtime = 0;
 function deviceMotionHandler3(eventData) {
+var newtime = new Date().getTime();
+
 // Grab the acceleration including gravity from the results
 var acceleration = eventData.accelerationIncludingGravity;
 
@@ -129,6 +133,7 @@ document.getElementById("moAccelIncludingGravity").innerHTML = rawAcceleration;
 document.getElementById("moAccel").innerHTML = rawAcceleration2;
 document.getElementById("rotationRate").innerHTML = rawRotationRate;
 document.getElementById("interval").innerHTML = interval;
+document.getElementById("elapsed").innerHTML = "" + (newtime - oldtime);
 document.getElementById("moCalcTiltLR").innerHTML = tiltLR;
 document.getElementById("moCalcTiltFB").innerHTML = tiltFB;
 //document.getElementById("result").innerHTML = resultString;
@@ -136,7 +141,7 @@ document.getElementById("moCalcTiltFB").innerHTML = tiltFB;
 // Apply the 2D rotation and 3D rotation to the image
 var rotation = "rotate("+ tiltLR +"deg) rotate3d(1,0,0, "+ (tiltFB)+"deg)";
 document.getElementById("imgLogo").style.webkitTransform = rotation
-
+oldtime = newtime;
 }
 
 </script>
