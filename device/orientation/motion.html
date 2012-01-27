@@ -50,9 +50,8 @@ This copied and modified from http://www.html5rocks.com/en/tutorials/device/orie
 <tr>
 <td>acceleration</td><td id="moAccel"></td>
 </tr>
-<tr>
-<td>rotationRate</td><td id="rotationRate"></td>
-</tr>
+<tr><td>rotationRate</td><td id="rotationRate"></td></tr>
+<tr><td>interval</td><td id="interval"></td></tr>
 <tr>
 <td>Calculated Left-Right Tilt</td><td id="moCalcTiltLR"></td>
 </tr>
@@ -105,7 +104,7 @@ var rawAcceleration2 = "[" + Math.round(acceleration2.x) + ", " + Math.round(acc
 
             var rotationRate = eventData.rotationRate;
             var rawRotationRate = "[" + Math.round(rotationRate.alpha) + ", " + Math.round(rotationRate.beta) + ", " + Math.round(rotationRate.gamma) + "]";
-
+            var interval = eventData.interval;
 // Z is the acceleration in the Z axis, and tells us if the device is facing up, or down
 var facingUp = -1;
 if (acceleration.z > 0) {
@@ -129,6 +128,7 @@ var tiltFB = Math.round(((acceleration.y + 9.81) / 9.81) * 90 * facingUp);
 document.getElementById("moAccelIncludingGravity").innerHTML = rawAcceleration;
 document.getElementById("moAccel").innerHTML = rawAcceleration2;
 document.getElementById("rotationRate").innerHTML = rawRotationRate;
+document.getElementById("interval").innerHTML = interval;
 document.getElementById("moCalcTiltLR").innerHTML = tiltLR;
 document.getElementById("moCalcTiltFB").innerHTML = tiltFB;
 //document.getElementById("result").innerHTML = resultString;
