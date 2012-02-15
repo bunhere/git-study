@@ -1,59 +1,136 @@
-<html>
+ 
 <head>
-<title>Javascript animation: Demo 1</title>
-<style type="text/css">
-
-body {
- font:76% normal verdana,arial,tahoma;
+<script> 
+var mCanvas;
+var mCanvas2;
+ 
+var canvasWidth = 200;
+var canvasHeight = 267;
+var width = 125;
+var height = 105;
+var padding = 25;
+var lineWidth = 8;
+var innerBorder = 5;
+var primaryColor = "#ffc821";
+var secondaryColor = "#faf100";
+var tertiaryColor = "#dcaa09";
+ 
+function init()
+{
+    //var canvas = document.getElementById("mycanvas");
+    mCanvas = document.createElement('canvas');
+    mCanvas.width=150;
+    mCanvas.height=150;
+    mCanvas2 = document.createElement('canvas');
+    mCanvas2.width=150;
+    mCanvas2.height=150;
+    if (mCanvas.getContext) {
+        var context = mCanvas.getContext("2d");
+ 
+        // Dimensions of the triangle
+        var width = 125;
+        var height = 100;
+        var padding = 20;
+            
+        // Create a triangluar path
+        context.beginPath();
+        context.moveTo(padding + width/2, padding);
+        context.lineTo(padding + width, height + padding);
+        context.lineTo(padding, height + padding);
+        context.closePath();
+            
+        // Create fill gradient
+        var gradient = context.createLinearGradient(0,0,0,height);
+        gradient.addColorStop(0, primaryColor);
+        gradient.addColorStop(1, secondaryColor);
+            
+        // Add a shadow around the object
+        context.shadowBlur = 10;
+        context.shadowColor = "black";
+            
+        // Stroke the outer outline
+        context.lineWidth = lineWidth * 2;
+        context.lineJoin = "round"; 
+        context.strokeStyle = gradient;
+        context.stroke();
+            
+        // Turn off the shadow, or all future fills will have shadows
+        context.shadowColor = "transparent";
+            
+        // Fill the path
+        context.fillStyle = gradient;
+        context.fill();
+ 
+        // Add a horizon reflection with a gradient to transparent
+        gradient=context.createLinearGradient(0,padding,0,padding+height);
+        gradient.addColorStop(0, "transparent");
+        gradient.addColorStop(0.5, "transparent");
+        gradient.addColorStop(0.5, tertiaryColor);
+        gradient.addColorStop(1, secondaryColor);
+ 
+        context.fillStyle = gradient;
+        context.fill();
+            
+        // Stroke the inner outline
+        context.lineWidth = lineWidth;
+        context.lineJoin = "round"; 
+        context.strokeStyle = "#333";
+        context.stroke();
+ 
+        // Draw the text exclamation point
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.font = "bold 60px 'Times New Roman', Times, serif";
+        context.fillStyle = "#333";
+        try{
+            context.fillText("!", padding + width/2, padding + height/1.5);
+        }catch(ex){}
+    }
+    if (mCanvas2.getContext) {
+        console.log("mCanvas2")
+        var contex = mCanvas2.getContext("2d");
+ 
+        // Dimensions of the triangle
+        var width = 125;
+        var height = 100;
+        var padding = 0;
+            
+        // Create a triangluar path
+        contex.beginPath();
+        contex.moveTo(padding, padding);
+        contex.lineTo(padding + width, padding);
+        contex.lineTo(padding + width, height + padding);
+        contex.lineTo(padding, height + padding);
+        contex.closePath();
+            
+        // Fill the path
+        contex.fillStyle="#ffc821";
+        contex.fill();
+    }
 }
-
-h1, h2 {
- font-size:1em;
+ 
+var scene = 0;
+function drawEx() {
+    var canvas = document.getElementById("mycanvas");
+    var context = canvas.getContext('2d');
+    canvas.width = canvas.width;
+    //context.clearRect(0, 0, 150, 150);
+    if (scene == 0) {
+        context.drawImage(mCanvas,0,0);
+        scene = 1;
+    } else {
+        context.drawImage(mCanvas2,0,0);
+        scene = 0;
+    }
 }
-
-#fooObject {
- /* simple box */
- position:absolute;
- left:0px;
- top:8em;
- width:5em;
- line-height:3em;
- background:#99ccff;
- border:1px solid #003366;
- white-space:nowrap;
- padding:0.5em;
+ 
+function loop() {
+    setInterval(drawEx, 1000 / 50); //change 1000/30 ~ 1000/60 fps
 }
-
-</style>
-<script type="text/javascript">
-
-var foo = null; // object
-
-function doMove() {
-  foo.style.left = parseInt(foo.style.left)+1+'px';
-  setTimeout(doMove,20); // call doMove in 20msec
-}
-
-function init() {
-  foo = document.getElementById('fooObject'); // get the "foo" object
-  foo.style.left = '0px'; // set its initial position to 0px
-  doMove(); // start animating
-}
-
-
-window.onload = init;
-
 </script>
 </head>
-
-<body>
-<a href="javascript:alert('alert clicked');"> alert button </a>
-<h1>Javascript animation: Demo 1</h1>
-<h2>Recursive setTimeout-based animation</h2>
-
-<div id="fooObject">
- <img src="http://cfile1.uf.tistory.com/T250x250/1173E04E4F12E4310851F1"/>
-</div>
-
+<body onload="init();">
+<canvas id="mycanvas" width="150" height="150"></canvas>
+<br>
+<a href="javascript:loop();"> DRAW </a>
 </body>
-</html>
