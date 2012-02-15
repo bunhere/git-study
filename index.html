@@ -113,8 +113,8 @@ var scene = 0;
 function drawEx() {
     var canvas = document.getElementById("mycanvas");
     var context = canvas.getContext('2d');
-    canvas.width = canvas.width;
-    //context.clearRect(0, 0, 150, 150);
+    //canvas.width = canvas.width;
+    context.clearRect(0, 0, 150, 150);
     if (scene == 0) {
         context.drawImage(mCanvas,0,0);
         scene = 1;
