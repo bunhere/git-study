@@ -1,37 +1,17 @@
 <!doctype html>
-<head>
-<script>
-var timerHandle;
-var count = 0;
-
-var sdate;
-var cdate;
-var str = "";
-function result() {
-    var edate = new Date();
-    str = " * : " + (edate - sdate) + "<br>" + str;
-    document.all["test"].innerHTML = str;
-    //document.write(" time : " + (edate - sdate));
-    clearInterval(timerHandle);
-}
- 
-function timer() {
-    count++;
-    var odate = new Date();
-    str = count + " : " + (odate - cdate) + " <br>" + str;
-    cdate = odate;
-    //document.all["test"].innerHTML = str;
-    if (count == 60 * 3)
-        result();
-}
-function load() {
-    sdate = new Date();
-    timerHandle = setInterval(timer, 10);
-}
-</script>
-</head>
-<body onload="load();">
-<div id="test"></div>
-<script>
-</script>
+<head><script>
+window.addEventListener('devicemotion', function(e) {
+    var d = document,
+        acc = e.acceleration,
+        acc2 = e.accelerationIncludingGravity,
+        rot = e.rotationRate;
+    d.getElementById("acc").innerHTML = acc.x + ", " + acc.y + ", " + acc.z;
+    d.getElementById("acc2").innerHTML = acc2.x + ", " + acc2.y + ", " + acc2.z;
+    d.getElementById("rot").innerHTML = rot.x + ", " + rot.y + ", " + rot.z;
+}, false);
+</script></head>
+<body>
+Acceleration: <div id="acc"></div>
+AccelerationIncludingGravity: <div id="acc2"></div>
+rotationRate: <div id="rot"></div>
 </body>
