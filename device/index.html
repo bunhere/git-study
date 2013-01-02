@@ -7,7 +7,7 @@ window.addEventListener('devicemotion', function(e) {
         rot = e.rotationRate;
     d.getElementById("acc").innerHTML = Math.round(acc.x) + ", " + Math.round(acc.y) + ", " + Math.round(acc.z);
     d.getElementById("acc2").innerHTML = Math.round(acc2.x) + ", " + Math.round(acc2.y) + ", " + Math.round(acc2.z);
-    d.getElementById("rot").innerHTML = Math.round(rot.x) + ", " + Math.round(rot.y) + ", " + Math.round(rot.z);
+    d.getElementById("rot").innerHTML = Math.round(rot.alpha) + ", " + Math.round(rot.beta) + ", " + Math.round(rot.gamma);
 }, false);
 </script></head>
 <body>
