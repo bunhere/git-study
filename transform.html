@@ -21,7 +21,7 @@ border:1px solid black;
 // 1
 var i = 1;
 var test = 'translate(1px)';
-document.getElementById("div2").style.webkittransform = test;
+document.getElementById("div2").style.transform = test;
 document.getElementById("result").innerHTML = "" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkittransform
 
 // 2
@@ -80,7 +80,7 @@ document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : 
 
 // 12
 
-document.getElementById("div2").style.transform = 'none';
+//document.getElementById("div2").style.transform = 'none';
 
 </script>
 </body>
