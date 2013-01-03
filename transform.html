@@ -4,16 +4,10 @@
 <style> 
 div
 {
-width:100px;
+width:500px;
 height:75px;
 background-color:red;
 border:1px solid black;
-}
-div#div2
-{
-transform:skew(45deg,45deg);
--moz-transform:skew(45deg,45deg); /* Firefox */
--webkit-transform:skew(45deg,45deg); /* Safari and Chrome */
 }
 </style>
 </head>
@@ -24,7 +18,70 @@ transform:skew(45deg,45deg);
 <div id="div2">Hello. This is a DIV element.</div>
 <div id="result"> </div>
 <script>
-document.getElementById("result").innerHTML = getComputedStyle(document.getElementById("div2")).transform
+// 1
+var i = 1;
+var test = 'translate(1px)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML = "" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+// 2
+test = 'matrix(1,2,3,4,5,6)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+// 3
+i++;
+
+// 4
+test = 'skewy(45deg)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+// 5
+test = 'translatey(1in)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+// 6
+test = 'rotate(90deg)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+
+// 7
+test = 'skewx(45deg)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+
+// 8
+test = 'translatex(1pt)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+
+// 9
+test = 'scale(2)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+
+// 10
+test = 'scaley(2)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+
+// 11
+test = 'skewy(45deg, 45deg)';
+document.getElementById("div2").style.transform = test;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+
+
+// 12
+
+document.getElementById("div2").style.transform = 'none';
+
 </script>
 </body>
 </html>
