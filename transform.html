@@ -21,13 +21,13 @@ border:1px solid black;
 // 1
 var i = 1;
 var test = 'translate(1px)';
-document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML = "" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkittransform
+document.getElementById("div2").style.webkitTransform = test;
+document.getElementById("result").innerHTML = "" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 // 2
 test = 'matrix(1,2,3,4,5,6)';
-document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("div2").style.transform = webkitTransform;
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 // 3
 i++;
@@ -35,47 +35,47 @@ i++;
 // 4
 test = 'skewy(45deg)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 // 5
 test = 'translatey(1in)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 // 6
 test = 'rotate(90deg)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 
 // 7
 test = 'skewx(45deg)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 
 // 8
 test = 'translatex(1pt)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 
 // 9
 test = 'scale(2)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 
 // 10
 test = 'scaley(2)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 
 // 11
 test = 'skewy(45deg, 45deg)';
 document.getElementById("div2").style.transform = test;
-document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).transform
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).webkitTransform
 
 
 // 12
