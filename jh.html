@@ -6,6 +6,10 @@ a:hover
 {
 outline:red dotted thick;
 }
+a.tips:hover
+{
+outline:none;
+}
 </style>
 </head>
 
@@ -13,7 +17,9 @@ outline:red dotted thick;
 abcdefg
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
  <label id="label1" style="position:fixed; right:0; top:0">Hello</label>
-  <a id="tips"  >Useful Tips Section</a>
+  <a id="tips"  >Useful Tips Section</a><br>
+  <a id="tips" href="#tips" > new test</a><br>
+  
   <a href="#tips" onmouseout='document.getElementById("label1").innerHTML="mouseout";' onmouseover='document.getElementById("label1").innerHTML="mouseover";' >Search</a>  
   
   
