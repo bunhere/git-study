@@ -80,7 +80,8 @@ document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : 
 
 
 // 12
-
+document.getElementById("div2").style.width = "30cm";
+document.getElementById("result").innerHTML += "<br>" + i++ + ") " + test + " : " + getComputedStyle(document.getElementById("div2")).width;
 document.getElementById("div2").style.webkitTransform = 'none';
 
 </script>
