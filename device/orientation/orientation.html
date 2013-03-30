@@ -60,6 +60,10 @@ This is copied and modified from http://www.html5rocks.com/en/tutorials/device/o
 	    		<td>Motion Up/Down</td>
 	    		<td id="doMotionUD"></td>
 	    	</tr>
+	    	<tr>
+                	<td>compassneedscalibration</td>
+                	<td id="compass"></td>
+            	</tr>
 	    </table>
 	</div>
 	
@@ -70,6 +74,7 @@ This is copied and modified from http://www.html5rocks.com/en/tutorials/device/o
 	<script type="text/javascript">
 		init3();
 		var count = 0;
+		var iii = 0;
 	
 		function init() {
 			if (window.DeviceOrientationEvent) {
@@ -132,6 +137,10 @@ This is copied and modified from http://www.html5rocks.com/en/tutorials/device/o
 				document.getElementById("doEvent").innerHTML = "Not supported on your device or browser.  Sorry."
 			}
 		}
+		window.addEventListener("compassneedscalibration", function(e) {
+			iii++;
+			document.getElementById("compass").innerHTML = "" + iii;
+			}, false);
 	
 		function deviceOrientationHandler(tiltLR, tiltFB, dir, motionUD) {
 			document.getElementById("doTiltLR").innerHTML = Math.round(tiltLR);
