@@ -117,7 +117,7 @@ This is copied and modified from http://www.html5rocks.com/en/tutorials/device/o
 					
 					// call our orientation event handler
 					deviceOrientationHandler(tiltLR, tiltFB, dir, motUD);
-					document.getElementById("log").innerHTML = eventData.absolute;
+					document.getElementById("log").innerHTML = "'" + eventData.absolute + "'";
 					}, false);
 			} else if (window.OrientationEvent) {
 				document.getElementById("doEvent").innerHTML = "MozOrientation";
