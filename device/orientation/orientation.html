@@ -145,6 +145,9 @@ This is copied and modified from http://www.html5rocks.com/en/tutorials/device/o
 		}
 		if (window.CompassNeedsCalibrationEvent)
 		    window.alert("compassNeedsCalibrationEvent is supported");
+		else
+		    window.alert("compassNeedsCalibrationEvent is not supported");
+		   
 		window.addEventListener("compassneedscalibration", function(e) {
 			iii++;
 			document.getElementById("compass").innerHTML = "" + iii;
