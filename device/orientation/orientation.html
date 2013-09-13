@@ -143,6 +143,8 @@ This is copied and modified from http://www.html5rocks.com/en/tutorials/device/o
 				document.getElementById("doEvent").innerHTML = "Not supported on your device or browser.  Sorry."
 			}
 		}
+		if (window.CompassNeedsCalibrationEvent)
+		    window.alert("compassNeedsCalibrationEvent is supported");
 		window.addEventListener("compassneedscalibration", function(e) {
 			iii++;
 			document.getElementById("compass").innerHTML = "" + iii;
